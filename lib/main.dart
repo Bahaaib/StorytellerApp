@@ -13,6 +13,7 @@ class StorytellerApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Storyteller',
+      home: homePage,
       routes: <String, WidgetBuilder>{
         '/home': (BuildContext context) => new HomePage()
       },
