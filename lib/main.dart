@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storyteller/HomePage/home_page.dart';
 
-// @todo #1 test pdd integration2
+// @todo #1 test pdd integration
 void main() => runApp(MaterialApp(
   home: StorytellerApp(),
       debugShowCheckedModeBanner: false,
