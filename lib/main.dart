@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'data.dart';
-
+// @todo #1 solve lint errors d(152 error currently)
 void main() => runApp(MaterialApp(
       home: MyApp(),
       debugShowCheckedModeBanner: false,
