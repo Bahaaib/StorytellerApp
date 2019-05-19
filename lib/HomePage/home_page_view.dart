@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:storyteller/HomePage/home_page_viewmodel.dart';
 import 'package:storyteller/data.dart';
@@ -109,14 +110,21 @@ class HomePageView extends HomePageViewModel {
                 children: <Widget>[
                   CardScrollWidget(currentPage),
                   Positioned.fill(
-                    child: PageView.builder(
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream:
+                        Firestore.instance.collection('collection').snapshots(),
+                      builder: (BuildContext context, 
+                                AsyncSnapshot<QuerySnapshot> snapshot) =>
+                        PageView(/*children: createChildren(snapshot)*/),
+                    )
+                    /*child: PageView.builder(
                       itemCount: images.length,
                       controller: controller,
                       reverse: true,
                       itemBuilder: (context, index) {
                         return Container();
                       },
-                    ),
+                    ),*/
                   )
                 ],
               ),
