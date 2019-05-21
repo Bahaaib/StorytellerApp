@@ -110,21 +110,26 @@ class HomePageView extends HomePageViewModel {
                 children: <Widget>[
                   CardScrollWidget(currentPage),
                   Positioned.fill(
+                    /// This stream builder code piece is an example on
+                    /// how to retrieve the stories and deal with them. 
                     child: StreamBuilder<QuerySnapshot>(
                       stream:
-                        Firestore.instance.collection('collection').snapshots(),
+                        Firestore.instance.collection('stories').snapshots(),
                       builder: (BuildContext context, 
                                 AsyncSnapshot<QuerySnapshot> snapshot) =>
-                        PageView(/*children: createChildren(snapshot)*/),
+                        PageView(
+                          children: snapshot.data.documents
+                            .map((DocumentSnapshot document){
+                              return Column(
+                                children: [
+                                  Text(document['title']),
+                                  Text(document['body']),
+                                  Image.network(document['thumb'])
+                                ],
+                              );
+                            }).toList()
+                        ),
                     )
-                    /*child: PageView.builder(
-                      itemCount: images.length,
-                      controller: controller,
-                      reverse: true,
-                      itemBuilder: (context, index) {
-                        return Container();
-                      },
-                    ),*/
                   )
                 ],
               ),
