@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:storyteller/HomePage/home_page_viewmodel.dart';
 import 'package:storyteller/data.dart';
@@ -109,14 +110,26 @@ class HomePageView extends HomePageViewModel {
                 children: <Widget>[
                   CardScrollWidget(currentPage),
                   Positioned.fill(
-                    child: PageView.builder(
-                      itemCount: images.length,
-                      controller: controller,
-                      reverse: true,
-                      itemBuilder: (context, index) {
-                        return Container();
-                      },
-                    ),
+                    /// This stream builder code piece is an example on
+                    /// how to retrieve the stories and deal with them. 
+                    child: StreamBuilder<QuerySnapshot>(
+                      stream:
+                        Firestore.instance.collection('stories').snapshots(),
+                      builder: (BuildContext context, 
+                                AsyncSnapshot<QuerySnapshot> snapshot) =>
+                        PageView(
+                          children: snapshot.data.documents
+                            .map((DocumentSnapshot document){
+                              return Column(
+                                children: [
+                                  Text(document['title']),
+                                  Text(document['body']),
+                                  Image.network(document['thumb'])
+                                ],
+                              );
+                            }).toList()
+                        ),
+                    )
                   )
                 ],
               ),
