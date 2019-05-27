@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:storyteller/HomePage/home_page_viewmodel.dart';
 import 'package:storyteller/data.dart';
@@ -111,25 +110,15 @@ class HomePageView extends HomePageViewModel {
                   CardScrollWidget(currentPage),
                   Positioned.fill(
                     /// This stream builder code piece is an example on
-                    /// how to retrieve the stories and deal with them. 
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream:
-                        Firestore.instance.collection('stories').snapshots(),
-                      builder: (BuildContext context, 
-                                AsyncSnapshot<QuerySnapshot> snapshot) =>
-                        PageView(
-                          children: snapshot.data.documents
-                            .map((DocumentSnapshot document){
-                              return Column(
-                                children: [
-                                  Text(document['title']),
-                                  Text(document['body']),
-                                  Image.network(document['thumb'])
-                                ],
-                              );
-                            }).toList()
-                        ),
-                    )
+                    /// how to retrieve the stories and deal with them.
+                    child: PageView.builder(
+                      itemCount: images.length,
+                      controller: controller,
+                      reverse: true,
+                      itemBuilder: (context, index) {
+                        return Container();
+                      },
+                    ),
                   )
                 ],
               ),
@@ -209,7 +198,7 @@ final double cardAspectRatio = 12.0 / 16.0;
 final double widgetAspectRatio = cardAspectRatio * 1.2;
 
 class CardScrollWidget extends StatelessWidget {
-  final currentPage;
+  final double currentPage;
   final padding = 20.0;
   final verticalInset = 20.0;
 
