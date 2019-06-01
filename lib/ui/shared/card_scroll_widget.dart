@@ -32,7 +32,8 @@ class CardScrollWidget extends StatelessWidget {
             final double safeHeight = height - 2 * padding;
 
             final double heightOfPrimaryCard = safeHeight;
-            final double widthOfPrimaryCard = heightOfPrimaryCard * cardAspectRatio;
+            final double widthOfPrimaryCard = heightOfPrimaryCard *
+                cardAspectRatio;
 
             final double primaryCardLeft = safeWidth - widthOfPrimaryCard;
             final double horizontalInset = primaryCardLeft / 2;
@@ -99,7 +100,8 @@ class CardScrollWidget extends StatelessWidget {
                                         horizontal: 22, vertical: 6),
                                     decoration: BoxDecoration(
                                         color: Colors.blueAccent,
-                                        borderRadius: BorderRadius.circular(20)),
+                                        borderRadius: BorderRadius.circular(
+                                            20)),
                                     child: Text('Read Later',
                                         style: TextStyle(color: Colors.white)),
                                   ),
