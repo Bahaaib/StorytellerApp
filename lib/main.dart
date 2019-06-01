@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:storyteller/HomePage/home_page.dart';
-import 'package:storyteller/locator.dart';
 
 void main() {
-  locatorSetup();
   runApp(MaterialApp(
     home: StorytellerApp(),
     debugShowCheckedModeBanner: false,
