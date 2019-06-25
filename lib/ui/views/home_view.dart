@@ -13,9 +13,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   ///Current page index
   double currentPage = images.length - 1.0;
+
   @override
   Widget build(BuildContext context) {
-    HomeModel _homeModel = Provider.of<HomeModel>(context);
+    final HomeModel _homeModel = Provider.of<HomeModel>(context);
 
     final PageController controller =
     PageController(initialPage: images.length - 1);
@@ -113,20 +114,27 @@ class _HomeViewState extends State<HomeView> {
                   ],
                 ),
               ),
-              Stack(
-                children: <Widget>[
-                  CardScrollWidget(currentPage),
-                  Positioned.fill(
-                    child: PageView.builder(
-                      itemCount: images.length,
-                      controller: controller,
-                      reverse: true,
-                      itemBuilder: (BuildContext context, int index) =>
-                          Container(),
-                    ),
-                  )
-                ],
-              ),
+              InkWell(
+                  child: Stack(
+                    children: <Widget>[
+                      CardScrollWidget(currentPage),
+                      Positioned.fill(
+                        child: PageView.builder(
+                            itemCount: images.length,
+                            controller: controller,
+                            reverse: true,
+                            itemBuilder: (BuildContext context, int index) {
+                              //Container();
+                            }),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                    print('Tapped');
+                    _homeModel
+                      ..index = currentPage.floor().toInt()
+                      ..navigateToPage(context);
+                  }),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
