@@ -36,6 +36,17 @@ class _HomeViewState extends State<HomeView> {
               end: Alignment.topCenter,
               tileMode: TileMode.clamp)),
       child: Scaffold(
+        drawer: const UserAccountsDrawerHeader(
+          accountName: Text('Bahaa Ibrahim'),
+          accountEmail: Text('ibahaaibarhim@gmail.com'),
+          currentAccountPicture: CircleAvatar(
+            backgroundColor: Color(0xe91e63),
+            child: Text(
+              'B',
+              style: TextStyle(fontSize: 40),
+            ),
+          ),
+        ),
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(
@@ -69,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text('Trending',
                         style: TextStyle(
                           color: Colors.white,
@@ -90,9 +101,9 @@ class _HomeViewState extends State<HomeView> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 22, vertical: 6),
+                        child: const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 22, vertical: 6),
                           child: Text('Animated',
                               style: TextStyle(color: Colors.white)),
                         ),
@@ -101,7 +112,7 @@ class _HomeViewState extends State<HomeView> {
                     const SizedBox(
                       width: 15,
                     ),
-                    Text('25+ Stories',
+                    const Text('25+ Stories',
                         style: TextStyle(color: Colors.blueAccent))
                   ],
                 ),
@@ -131,7 +142,7 @@ class _HomeViewState extends State<HomeView> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
+                  children: const <Widget>[
                     Text('Favourite',
                         style: TextStyle(
                           color: Colors.white,
@@ -152,9 +163,9 @@ class _HomeViewState extends State<HomeView> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 22, vertical: 6),
+                        child: const Padding(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 22, vertical: 6),
                           child: Text('Latest',
                               style: TextStyle(color: Colors.white)),
                         ),
@@ -163,7 +174,7 @@ class _HomeViewState extends State<HomeView> {
                     const SizedBox(
                       width: 15,
                     ),
-                    Text('9+ Stories',
+                    const Text('9+ Stories',
                         style: TextStyle(color: Colors.blueAccent))
                   ],
                 ),
