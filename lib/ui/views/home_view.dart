@@ -19,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
     final HomeModel _homeModel = Provider.of<HomeModel>(context);
 
     final PageController controller =
-    PageController(initialPage: images.length - 1);
+        PageController(initialPage: images.length - 1);
     controller.addListener(() {
       setState(() {
         currentPage = controller.page;
@@ -29,9 +29,9 @@ class _HomeViewState extends State<HomeView> {
       decoration: const BoxDecoration(
           gradient: LinearGradient(
               colors: <Color>[
-                Color(0xFF1b1e44),
-                Color(0xFF2d3447),
-              ],
+            Color(0xFF1b1e44),
+            Color(0xFF2d3447),
+          ],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
               tileMode: TileMode.clamp)),
