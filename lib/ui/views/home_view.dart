@@ -16,6 +16,7 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     final HomeModel _homeModel = Provider.of<HomeModel>(context);
 
     final PageController controller =
@@ -36,14 +37,61 @@ class _HomeViewState extends State<HomeView> {
               end: Alignment.topCenter,
               tileMode: TileMode.clamp)),
       child: Scaffold(
-        drawer: const UserAccountsDrawerHeader(
-          accountName: Text('Bahaa Ibrahim'),
-          accountEmail: Text('ibahaaibarhim@gmail.com'),
-          currentAccountPicture: CircleAvatar(
-            backgroundColor: Color(0xe91e63),
-            child: Text(
-              'B',
-              style: TextStyle(fontSize: 40),
+        key: _scaffoldKey,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          actions: <Widget>[
+            IconButton(
+              padding: const EdgeInsets.only(right: 30),
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () {},
+            )
+          ],
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
+              size: 30,
+            ),
+            onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          ),
+        ),
+        drawer: Theme(
+          data:
+              Theme.of(context).copyWith(primaryColor: const Color(0xFF2d3447)),
+          child: Drawer(
+            child: ListView(
+              children: const <Widget>[
+                UserAccountsDrawerHeader(
+                  accountName: Text('Bahaa Ibrahim'),
+                  accountEmail: Text('ibahaaibarhim@gmail.com'),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundColor: Color(0xffe91e63),
+                    child: Text(
+                      'B',
+                      style: TextStyle(fontSize: 40),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  leading: Icon(Icons.trending_up),
+                  title: Text('Trending'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.favorite),
+                  title: Text('Favorite'),
+                ),
+                Divider(),
+                ListTile(
+                  leading: Icon(Icons.arrow_back),
+                  title: Text('Sign out'),
+                )
+              ],
             ),
           ),
         ),
@@ -56,24 +104,7 @@ class _HomeViewState extends State<HomeView> {
                     left: 12, right: 12, top: 30, bottom: 8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconButton(
-                      icon: const Icon(
-                        Icons.menu,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
+                  children: const <Widget>[],
                 ),
               ),
               Padding(
@@ -143,7 +174,7 @@ class _HomeViewState extends State<HomeView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const <Widget>[
-                    Text('Favourite',
+                    Text('Favorite',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 46,
