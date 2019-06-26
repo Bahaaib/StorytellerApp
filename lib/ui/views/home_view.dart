@@ -77,14 +77,6 @@ class _HomeViewState extends State<HomeView> {
                           fontFamily: 'Calibre-Semibold',
                           letterSpacing: 1,
                         )),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    )
                   ],
                 ),
               ),
@@ -147,14 +139,6 @@ class _HomeViewState extends State<HomeView> {
                           fontFamily: 'Calibre-Semibold',
                           letterSpacing: 1,
                         )),
-                    IconButton(
-                      icon: const Icon(
-                        Icons.more_horiz,
-                        size: 30,
-                        color: Colors.white,
-                      ),
-                      onPressed: () {},
-                    )
                   ],
                 ),
               ),
