@@ -1,4 +1,4 @@
-package com.example.storyteller;
+package com.bahaa.storyteller;
 
 import android.os.Bundle;
 

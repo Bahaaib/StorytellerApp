@@ -16,7 +16,6 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     final HomeModel _homeModel = Provider.of<HomeModel>(context);
 
     final PageController controller =
@@ -37,7 +36,6 @@ class _HomeViewState extends State<HomeView> {
               end: Alignment.topCenter,
               tileMode: TileMode.clamp)),
       child: Scaffold(
-        key: _scaffoldKey,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -52,19 +50,22 @@ class _HomeViewState extends State<HomeView> {
               onPressed: () {},
             )
           ],
-          leading: IconButton(
-            icon: const Icon(
-              Icons.menu,
-              color: Colors.white,
-              size: 30,
-            ),
-            onPressed: () => _scaffoldKey.currentState.openDrawer(),
+          leading: Builder(
+            builder: (BuildContext context) => IconButton(
+                  icon: const Icon(
+                    Icons.menu,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  onPressed: () => Scaffold.of(context).openDrawer(),
+                ),
           ),
         ),
         drawer: Theme(
           data:
               Theme.of(context).copyWith(primaryColor: const Color(0xFF2d3447)),
           child: Drawer(
+            key: _scaffoldKey,
             child: ListView(
               children: const <Widget>[
                 UserAccountsDrawerHeader(
@@ -158,7 +159,7 @@ class _HomeViewState extends State<HomeView> {
                             controller: controller,
                             reverse: true,
                             itemBuilder: (BuildContext context, int index) {
-                              //Container();
+                              Container();
                             }),
                       ),
                     ],
